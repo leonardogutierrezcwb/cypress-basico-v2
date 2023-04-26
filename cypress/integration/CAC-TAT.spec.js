@@ -16,7 +16,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#lastName').type('Dos Santos Gutierrez')
         cy.get('#email').type('leonardogutierrezcwb@gmail.com')
         cy.get('#open-text-area').type(longText, {delay: 0})
-        cy.get('button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click()
         cy.get('.success').should('be.visible')
     })
     it('exibe mensagem de erro ao submeter o formulário com email com formatação inválida', function() {
@@ -24,7 +24,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#lastName').type('Dos Santos Gutierrez')
         cy.get('#email').type('leonardogutierrezcwb@gmail,com')
         cy.get('#open-text-area').type('teste')
-        cy.get('button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click()
         cy.get('.error').should('be.visible')
     })
     it('validação de telefone, só aceitar números', function (){
@@ -36,7 +36,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#email').type('leonardogutierrezcwb@gmail,com')
         cy.get('#phone-checkbox').click()
         cy.get('#open-text-area').type('teste')
-        cy.get('button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click()
         cy.get('.error').should('be.visible')
     })
     
@@ -54,5 +54,8 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     it('envia o formuário com sucesso usando um comando customizado', function(){
         cy.fillMandatoryFieldsAndSubmit()
         cy.get('.success').should('be.visible')
+    })
+    it('Usando comandos cy.contains', function (){
+    
     })
 })       
