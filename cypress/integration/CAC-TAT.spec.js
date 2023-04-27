@@ -58,6 +58,4 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     it('Usando comandos cy.contains', function (){
     
     })
-})       
-
-Teste
+}) 
