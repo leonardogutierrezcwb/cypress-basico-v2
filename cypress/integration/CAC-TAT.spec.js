@@ -1,6 +1,6 @@
 ///<reference types="Cypress" />
 
-const { functionsIn } = require("cypress/types/lodash")
+//const { functionsIn } = require("cypress/types/lodash")
 
 describe('Central de Atendimento ao Cliente TAT', function() {
     const THREE_SECONDS_IN_MS = 3000
@@ -204,7 +204,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
        .invoke('val', longText)
        .should('have.value', longText)
     })      
-    it.only('Faz uma requisição HTTP', function() {
+    it('Faz uma requisição HTTP', function() {
         cy.request('https://cac-tat.s3.eu-central-1.amazonaws.com/index.html')
         .should(function(response) {
             const { status, statusText, body } = response
@@ -213,9 +213,14 @@ describe('Central de Atendimento ao Cliente TAT', function() {
             expect(body).to.include('CAC TAT') 
         })
     })
-    it('Encontrando o gato escondido', function(){
+    it.only('Encontrando o gato escondido', function(){
         cy.get('#cat')
         .invoke('show')
         .should('be.visible')
+        cy.get('#title')
+        .invoke('text', 'CAT TAT')
+        cy.get('#subtitle')
+        .invoke('text', 'EU 💀 DOG' )
+
     })
 })
